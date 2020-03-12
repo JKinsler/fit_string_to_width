@@ -62,29 +62,33 @@ def fit_to_width(string, limit):
             count += len(word)
         return count
 
-    for word in string_list:
+    for index in range(len(string_list)):
         # print(word, index)
-        if (count(new_line)+count(word)) < limit:
-            print(count(new_line) + count(word))
+        word = string_list[0]
+        if (count(new_line)+count(word)) <= limit:
+            # print(count(new_line) + count(word))
             
             # add new word to the line
             new_line.append(word)
             new_line.append(" ")
-            print(f'new_line {new_line}')
+            # print(f'new_line {new_line}')
             
             # remove the word from string list
             string_list.pop(0)
-            print(f'string_list: {string_list}')
-
-            if string_list == []:
-                new_string = iterable.join(new_line)
-                print(f'new_string: {new_string}')
+            # print(f'string_list: {string_list}')
         
         else:
             new_string = iterable.join(new_line)
-            print(f'new_string: {new_string}')
+            print(new_string)
             new_line = []
             new_line.append(word)
+            new_line.append(" ")
+            string_list.pop(0)
+
+    
+    if string_list == []:
+                new_string = iterable.join(new_line)
+                print(new_string)
 
 
     return
@@ -94,7 +98,7 @@ def fit_to_width(string, limit):
 
 
 
-# if __name__ == '__main__':
-#     import doctest
-#     if doctest.testmod().failed == 0:
-#         print('\n✨ ALL TESTS PASSED!\n')
+if __name__ == '__main__':
+    import doctest
+    if doctest.testmod().failed == 0:
+        print('\n✨ ALL TESTS PASSED!\n')
